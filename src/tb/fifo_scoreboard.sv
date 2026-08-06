@@ -33,7 +33,7 @@ function void reference_model(fifo_seq_item s);
 		status_cnt=0;
 		exp_data_out=0;
 		exp_full=0;
-		exp_empty=0;
+		exp_empty=1;
 	end
 	else begin
 		if((s.wr_en && s.wr_cs) &&(s.rd_en &&s.rd_cs)&& exp_full==0 && exp_empty ==0) begin
@@ -59,7 +59,7 @@ function void reference_model(fifo_seq_item s);
 		status_cnt=0;
 		exp_data_out=0;
 		exp_full=0;
-		exp_empty=0;
+		exp_empty=1;
 	end
 	else begin
 		if(status_cnt==`RAM_DEPTH) begin

@@ -7,24 +7,34 @@ endfunction
 task write_operation;
 	req=fifo_seq_item::type_id::create("req");
         start_item(req);
-	req.randomize() with {req.wr_en==1;req.wr_cs==1;};
+	req.randomize() with {req.wr_en==1;req.wr_cs==1; req.rd_en==0; req.rd_cs==0;};
 	finish_item(req);
 endtask
 
 task read_operation;
 	req=fifo_seq_item::type_id::create("req");
         start_item(req);
-	req.randomize() with {req.rd_en==1;req.rd_cs==1;};
+	req.randomize() with {req.rd_en==1;req.rd_cs==1;req.wr_en==0;req.wr_cs==0;};
+	finish_item(req);
+endtask
+
+task write_read_operation;
+	req=fifo_seq_item::type_id::create("req");
+        start_item(req);
+	req.randomize() with {req.wr_en==1;req.wr_cs==1; req.rd_en==1; req.rd_cs==1;};
 	finish_item(req);
 endtask
 
 task body();
-repeat(3) begin
-    write_operation;
-   end
-    
-    read_operation;
-    read_operation;
-    read_operation;
+repeat(5)
+write_operation;
+
+repeat(5)
+read_operation;
+
+repeat(5);
+write_read_operation;
+
+
 endtask
 endclass

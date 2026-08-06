@@ -41,8 +41,8 @@ reg  [ADDR_WIDTH  :0] status_cnt;
 reg  [DATA_WIDTH-1:0] data_out ;
 wire [DATA_WIDTH-1:0] data_ram ;
 
-assign full  = (status_cnt === RAM_DEPTH);
-assign empty = (status_cnt === 0);
+assign full  = (status_cnt == RAM_DEPTH);
+assign empty = (status_cnt == 0);
 
 //-----------Internal write/read qualifiers-------
 // Only allow a pointer/counter update when the operation
@@ -94,7 +94,7 @@ begin : STATUS_COUNTER
   end
 end
 
-ram_dp_ar_aw #(DATA_WIDTH,ADDR_WIDTH) DP_RAM (
+ram_dp_ar_aw #(DATA_WIDTH,ADDR_WIDTH) DP_RAM (.clk(clk),
 .address_0 (wr_pointer) , // address_0 input
 .data_0    (data_in)    , // data_0 bi-directional
 .cs_0      (wr_cs)      , // chip select
