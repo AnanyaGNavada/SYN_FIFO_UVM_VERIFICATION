@@ -26,15 +26,23 @@ task write_read_operation;
 endtask
 
 task body();
-repeat(5)
+repeat(15)
 write_operation;
 
-repeat(5)
+repeat(15)
 read_operation;
 
-repeat(5);
+repeat(15)
+write_operation;
+
+repeat(15)
+read_operation;
+
+repeat(5)
 write_read_operation;
 
+/*repeat(260)
+write_operation;*/
 
 endtask
 endclass

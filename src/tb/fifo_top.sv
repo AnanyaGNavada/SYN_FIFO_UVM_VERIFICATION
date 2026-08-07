@@ -12,6 +12,12 @@ task apply_reset;
 rst=1'b1;
 repeat(2) @(posedge clk);
 rst=1'b0;
+
+ repeat(20) @(posedge clk);  
+
+  rst = 1'b1;
+  repeat(2) @(posedge clk);
+  rst = 1'b0;
 endtask
 
 initial begin
