@@ -16,13 +16,12 @@ task run_phase(uvm_phase phase);
 	forever begin
 		mon_seq=fifo_seq_item::type_id::create("mon_seq");
 		@(vif.mon_cb);
-				mon_seq.data_in=vif.mon_cb.data_in;
-
+		mon_seq.data_in=vif.mon_cb.data_in;
 		mon_seq.wr_en=vif.mon_cb.wr_en;
 		mon_seq.wr_cs=vif.mon_cb.wr_cs;
 		mon_seq.rd_en=vif.mon_cb.rd_en;
 		mon_seq.rd_cs=vif.mon_cb.rd_cs;
-				//@(vif.mon_cb);
+		//@(vif.mon_cb);
 		mon_seq.data_out=vif.mon_cb.data_out;
 		mon_seq.empty=vif.mon_cb.empty;
 		mon_seq.full=vif.mon_cb.full;
