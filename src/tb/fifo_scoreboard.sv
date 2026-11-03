@@ -12,7 +12,7 @@ uvm_analysis_imp #(fifo_seq_item,fifo_scoreboard) scb_imp;
 fifo_seq_item scb_seq;
 function new(string name ="fifo_scoreboard",uvm_component parent);
 	super.new(name,parent);
-	scb_imp=new("scb_inp",this);
+	scb_imp=new("scb_imp",this);
 endfunction
 function void build_phase(uvm_phase phase);
 	super.build_phase(phase);
